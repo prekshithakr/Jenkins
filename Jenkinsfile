@@ -11,9 +11,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Install dependencies (example for Node.js or Python)
-                sh 'npm install'  // For Node.js projects
-                // sh 'pip install -r requirements.txt'  // Uncomment for Python projects
+                 sh 'pip install -r requirements.txt' 
             }
         }
 
