@@ -24,26 +24,18 @@ pipeline {
 
         stage('Test') {
             steps {
-                // Run tests
-                sh 'npm test'  // For Node.js
-                // sh 'pytest'  // Uncomment for Python tests
+                sh 'pytest'  
             }
         }
 
-        stage('Archive Artifacts') {
-            steps {
-                // Save build artifacts for future reference or deployment
-                archiveArtifacts artifacts: '**/dist/**/*', allowEmptyArchive: true
-            }
-        }
-
+       
         stage('Deploy') {
             steps {
                 // Deploy to a server or container
                 echo 'Deploying application...' 
                 // Example: Deploying Docker container
                 sh 'docker build -t my-app:latest .'
-                sh 'docker run -d -p 80:80 my-app:latest'
+                sh 'docker run --name pythonapp my-app:latest'
             }
         }
     }
